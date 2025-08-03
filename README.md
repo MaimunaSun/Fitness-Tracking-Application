@@ -1,48 +1,10 @@
 # Fitness-Tracking-Application
-Mobile Activity Recognition App (Java, Android)
-This project is a privacy-focused fitness tracking app developed in Java for Android. It uses an on-device machine learning model to recognize user activities (e.g., walking, jogging, sitting) based on accelerometer sensor data—removing the need for expensive wearables or cloud processing.
+This project is a privacy-focused fitness tracking application developed in Java for Android devices. It performs on-device activity recognition using accelerometer sensor data, removing the need for costly wearables or cloud-based computation. By processing data locally, the app ensures user privacy while reducing infrastructure costs and dependency on internet connectivity.
 
- Key Features
-On-Device Machine Learning:
-Activity classification performed locally using accelerometer data (collected at 20Hz in overlapping 5-second windows), ensuring data privacy and offline functionality.
+The application is built using Android Architecture Components, including ViewModel, LiveData, and Room ORM, to promote a robust, modular, and maintainable architecture. Accelerometer data is collected at a frequency of 20Hz in overlapping 5-second windows. A real-time data pipeline was developed to handle the full lifecycle: from acquiring and preprocessing sensor data, extracting relevant features, classifying the activity using a machine learning model, and storing the predicted activity labels in a local SQLite database using Room.
 
-Real-Time Data Pipeline:
-Built an end-to-end pipeline in Java to:
+The detected activity (e.g., walking, jogging, sitting) is logged in the background and displayed in real time on a user-friendly interface. The ViewModel ensures that activity logs with timestamps are reflected immediately in the UI. The app also provides personalized insights such as total active and inactive time and estimated calories burned. These insights are computed based on both the activity data and the user's profile information. When a user updates their profile, all insights are recalculated accordingly.
 
-Stream and preprocess sensor data
+To support ethical data governance, the app ensures compliance with the Protection of Personal Information (POPI) Act by keeping all user data on-device and implementing responsible AI practices in the handling, storage, and processing of activity data. Privacy and security were core design principles throughout the development process.
 
-Extract relevant features
-
-Classify activities with the deployed model
-
-Store predictions in a local SQLite database via Room ORM
-
-User Interface & Insights:
-
-Real-time activity log with timestamps
-
-Actionable fitness insights such as:
-
-Total active/inactive time
-
-Estimated calories burned
-
-Insights update dynamically based on activity data and user profile changes
-
-Architecture & Design:
-Utilized Android Architecture Components (ViewModel, LiveData, Repository Pattern) for a robust, maintainable, and testable design.
-Room ORM simplifies database access by mapping SQLite tables to Java objects.
-
-📱 Tech Stack
-Java
-
-Android SDK
-
-Room ORM
-
-SQLite
-
-MVVM Architecture
-
-Machine Learning Model (integrated & deployed on-device)
-
+The use of Room ORM simplifies database operations by mapping SQLite tables to Java objects, allowing for clean and efficient data access. Overall, the app demonstrates a complete on-device machine learning pipeline for mobile activity recognition, with a focus on performance, privacy, and ethical data handling.
